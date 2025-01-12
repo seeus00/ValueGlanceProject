@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import testJson from '../test.json'
 
 //Create a separate functional component to display the table's contents
 const TableContent = ({entries, columns}) => {
@@ -108,8 +107,15 @@ const UserTable = () => {
   const [sorting, setSorting] = useState({ column: "date", order: "asc" });
   const [tableData, setTableData] = useState([]);
   
+  const resetTable = async () => {
+    const apiUrl = `https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey=${API_KEY}`;
+    const jsonData = await (await fetch(apiUrl)).json();
+
+    setTableData(jsonData);
+  };
+
   useEffect(() => {
-    setTableData(testJson);
+    resetTable();
   }, []);
 
   useEffect(() => {}, [tableData]);
@@ -117,11 +123,7 @@ const UserTable = () => {
   const columns = ['date', 'revenue', 'netIncome', 'grossProfit', 'eps', 'operatingIncome'];
   const sortColumns = ['date', 'revenue', 'netIncome'];
 
-  const resetTable = () => {
-    const apiUrl = ``
 
-    setTableData(testJson);
-  };
 
   const sortTable = (newSorting) => {
     setSorting(newSorting);
