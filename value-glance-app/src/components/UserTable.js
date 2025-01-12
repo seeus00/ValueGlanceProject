@@ -100,7 +100,7 @@ const SearchBar = ({ searchTable }) => {
 };
 
 
-const API_KEY = process.env.REACT_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const UserTable = () => {
   //Default sorting is by date and in ascending order
@@ -122,8 +122,6 @@ const UserTable = () => {
 
   const columns = ['date', 'revenue', 'netIncome', 'grossProfit', 'eps', 'operatingIncome'];
   const sortColumns = ['date', 'revenue', 'netIncome'];
-
-
 
   const sortTable = (newSorting) => {
     setSorting(newSorting);
