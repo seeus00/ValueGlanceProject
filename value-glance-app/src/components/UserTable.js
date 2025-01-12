@@ -101,6 +101,8 @@ const SearchBar = ({ searchTable }) => {
 };
 
 
+const API_KEY = process.env.REACT_API_KEY;
+
 const UserTable = () => {
   //Default sorting is by date and in ascending order
   const [sorting, setSorting] = useState({ column: "date", order: "asc" });
@@ -116,6 +118,8 @@ const UserTable = () => {
   const sortColumns = ['date', 'revenue', 'netIncome'];
 
   const resetTable = () => {
+    const apiUrl = ``
+
     setTableData(testJson);
   };
 
@@ -172,7 +176,6 @@ const UserTable = () => {
     </div>
   </div>
   )
-
 }
 
 export default UserTable;
